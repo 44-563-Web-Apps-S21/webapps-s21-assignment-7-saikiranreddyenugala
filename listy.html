@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html> <head>
+    <title>
+        NameList
+    </title>
+    <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: purple;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #e90e45; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: rgb(0, 19, 128);
+	  }
+	}
+</style></head>
+
+
+
+<body>
+    <h1>
+        Sai Kiran Reddy Enugala builds a list
+    </h1>
+    <label for="text">Item</label>
+    <input type="text" id="list" name="listitem"><br><br>
+		<div class="flex-container" id="target">
+		  <div class="listy">row item 1</div>   
+		  <div class="listy">row item 2</div>  
+		  <div class="listy">row item 3</div>  
+		</div>
+	
+	<p> Press the button to create an new element of type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add one</button>
+	
+	
+</body>
+<script>
+	function makeNewDiv(){
+		let element = document.createElement("div")
+		element.innerHTML = document.getElementById("list").value;
+        element.setAttribute('class', 'listy');
+        element.style.color = "orange"
+		element.style.color = "orange"
+		var listyItems = document.getElementsByClassName("listy");
+        len = listyItems.length;
+        var r = 0;
+        if (len > 8) {
+            for (var k = 0; k < 8; k++) {
+                if (listyItems[k].innerHTML == element.innerHTML) {
+                    listyItems[k].remove();
+                    console.log("We are getting rid of duplicates");
+                    r = 1;
+                    break;
+                } }
+            if (r == 0) {
+             var rand=Math.floor(Math.random()*(max-min)+min) 
+              listyItems[rand].remove();
+                console.log("We get rid of the first item.")
+            }
+        }
+        
+        document.getElementById('target').appendChild(element)	
+	}
+</script>
+</html>	
